@@ -249,29 +249,29 @@
                 Here we show some visual examples of how blob-grounded generation (BlobGEN) can capture irregular
                 objects, large objects and background. For example, the first three examples in (a) show that blob
                 representations can capture "a person with waving hands outside the blob". the last two examples in (a)
-                show that blob representations can capture "river with irregular shapes". Also, the fourth example in
+                show that blob representations can capture "a river with irregular shapes". Also, the fourth example in
                 (b)
                 also shows that blob representations can capture "the great wall with a zigzag shape". As for large
                 objects and background, the first two rows in (b) show that blob representations can capture "sky" with
                 the similar color and mood. The second row in (b) show that blob representations can capture the large
-                "pier" with the similar color, pattern and shape. The third row in (b) show that blob representations
+                "pier" with a similar color, pattern and shape. The third row in (b) show that blob representations
                 can capture the large
                 "foggy grass" and its reflection in the water. The last two rows in (b) show that blob representations
                 can capture the large mountains in the background.
             </p>
-            </div>
-            <figure style="width: 100%;">
-                <a href="assets/blobs_irregular.png">
-                    <center><img width="100%" src="assets/blobs_irregular.png"></center>
-                </a>
-                <p class="caption" style="margin-bottom: 24px;">
-                    Examples of blob-grounded generation capturing (a) irregular objects (e.g. "person with waving
-                    hands" and "river"), and (b) large objects and background (e.g., "sky", "mountain" and "grass").
-                    From left to right in each row, we show the reference real image, blobs, generated image and
-                    generated image superposed on blobs. Note that images have been compressed to save memory. Better
-                    zoom in for better visualization.
-                </p>
-            </figure>
+        </div>
+        <figure style="width: 100%;">
+            <a href="assets/blobs_irregular.png">
+                <center><img width="100%" src="assets/blobs_irregular.png"></center>
+            </a>
+            <p class="caption" style="margin-bottom: 24px;">
+                Examples of blob-grounded generation capturing (a) irregular objects (e.g. "person with waving
+                hands" and "river"), and (b) large objects and background (e.g., "sky", "mountain" and "grass").
+                From left to right in each row, we show the reference real image, blobs, generated image and
+                generated image superposed on blobs. Note that images have been compressed to save memory. Better
+                zoom in for better visualization.
+            </p>
+        </figure>
     </section>
 
     <section id="results1"/>
@@ -283,11 +283,13 @@
             same 8 fixed in-context demo examples</b> (without retrieval) for GPT-4 to generate bounding boxes for LMD
             and blobs for our
             method, respectively. We observe that 1) for some complex examples, such as "a boat to the right of a fork"
-            in (a) and "there are one car with three motocycles in th image" in (b), LMD fails but our method works; 2)
+            in (a) and "there are one car with three motorcycles in the image" in (b), LMD fails but our method works;
+            2)
             LMD consistently has the "copy-and-paste" artifact in its generated images (since it modifies the diffusion
             sampling process for compositionality), such as "a teddy bear to the left of a potted plant" in
             (a) and "a photo of four boats" in (b), while our generation looks much more natural; and 3) the
             sampling time of LMD is around 3x slower than our method.
+
         </p>
     </div>
     <figure style="width: 100%;">
@@ -387,8 +389,6 @@
         </p>
     </div>
     </section>
-
-
 
 
 </div>
