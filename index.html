@@ -142,6 +142,15 @@
         margin-bottom: 10px;
     }
 
+    .subcaption {
+        font-size: 14px;
+        /*font-style: italic;*/
+        color: #666;
+        text-align: left;
+        margin-top: 4px;
+        margin-bottom: 6px;
+    }
+
     video {
         display: block;
         margin: auto;
@@ -312,6 +321,85 @@
             image generation benchmarks.
         </p>
     </div>
+    </section>
+
+    <section id="demo"/>
+            <center>
+            <table class="center" width="100%">
+              <tr>
+                  <td><img width="100%" src="assets/sample_dict_0_blank_blobs.png"></td>
+                  <td><img width="100%" src="assets/sample_dict_0-combine.gif"></td>
+                  <td><img width="100%" src="assets/sample_dict_3_blank_blobs.png"></td>
+                  <td><img width="100%" src="assets/sample_dict_3-combine.gif"></td>
+              </tr>
+            </table>
+            </center>
+        <center>
+          <table class="center">
+            <tr>
+              <td width=50% style="text-align:center; vertical-align:top;">
+                  <p class="subcaption">Caption: "Two astronauts in a grassy field with trees in the background."</p>
+                  <p class="subcaption">Blob 1: "The tree is green and leafy, with a lush and healthy appearance."</p>
+                  <p class="subcaption">Blob 2: "The grass is tall and lush, with a mix of green and brown colors."</p>
+                  <p class="subcaption">Blob 3: "The astronaut wears a white space suit and a large glass helmet, floating in the air with his body stretched."</p>
+                  <p class="subcaption">Blob 4: "The astronaut appears to be walking in a wooded area, surrounded by trees. The astronaut wears a white space suit and a large glass helmet."</p>
+              </td>
+              <td style="padding-left: 5px; padding-right: 5px;"></td>
+              <td width=50% style="text-align:center; vertical-align:top;">
+                  <p class="subcaption">Caption: "A robot is playing a soccer ball with a giraffe on a beach."</p>
+                  <p class="subcaption">Blob 1: "The sky is light blue with a few white clouds."</p>
+                  <p class="subcaption">Blob 2: "The beach is full of golden sands that meet the azure sea waters."</p>
+                  <p class="subcaption">Blob 3: "The robot is a humanoid robot with a white body and two black eyes."</p>
+                  <p class="subcaption">Blob 4: "The ball is a pink soccer ball designed for professional use."</p>
+                  <p class="subcaption">Blob 5: "The giraffe is tall and brown, with a long neck and distinctive spotted coat."</p>
+                </td>
+            </tr>
+          </table>
+        </center>
+
+    <center>
+            <table class="center" width="100%">
+              <tr>
+                  <td><img width="100%" src="assets/sample_dict_2_blank_blobs.png"></td>
+                  <td><img width="100%" src="assets/sample_dict_2-combine.gif"></td>
+                  <td><img width="100%" src="assets/sample_dict_1_blank_blobs.png"></td>
+                  <td><img width="100%" src="assets/sample_dict_1-combine.gif"></td>
+              </tr>
+            </table>
+            </center>
+        <center>
+          <table class="center">
+            <tr>
+              <td width=50% style="text-align:center; vertical-align:top;">
+                  <p class="subcaption">Caption: "A dog who is a doctor is talking to a cat who is the dog doctor's patient."</p>
+                  <p class="subcaption">Blob 1: "The wall is in light gray color with a landscape painting on it."</p>
+                  <p class="subcaption">Blob 2: "The floor is light brown and appears to be made of hardwood. It has a natural and warm appearance and is large and spacious."</p>
+                  <p class="subcaption">Blob 3: "The cat is in gray color with a fat and fluffy body. It is sitting on a bench, listening the instructions of the dog doctor."</p>
+                  <p class="subcaption">Blob 4: "The bench is in black color with a leather texture."</p>
+                  <p class="subcaption">Blob 5: "The desk is in light blue color. It appears to be a classic work desk."</p>
+                  <p class="subcaption">Blob 6: "The dog has a brown head and dresses a white doctor uniform. It is sitting on a chair, talking to the cat."</p>
+                  <p class="subcaption">Blob 7: "The chair is a tan-colored leather chair, featuring a stitched design."</p>
+              </td>
+              <td style="padding-left: 5px; padding-right: 5px;"></td>
+              <td width=50% style="text-align:center; vertical-align:top;">
+                  <p class="subcaption">Caption: "Two raccoons walk under a drizzly rain, and each of them holds a umbrella."</p>
+                  <p class="subcaption">Blob 1: "The sky is in a dark grey color with heavy clouds hanging low and a drizzly rain in the background."</p>
+                  <p class="subcaption">Blob 2: "The building stands tall like proud sentinels, their steel and glass facades reflecting the city's vibrant energy."</p>
+                  <p class="subcaption">Blob 3: "The street is wet and sandy, with a black and white color scheme."</p>
+                  <p class="subcaption">Blob 4: "The raccoon has a pointed snout, a mask-like pattern of black fur around its eyes. Its body is stout and compact with grayish-brown fur."</p>
+                  <p class="subcaption">Blob 5: "The umbrella is red and its style is a traditional, collapsible design."</p>
+                  <p class="subcaption">Blob 6: "The raccoon has a pointed snout, a mask-like pattern of black fur around its eyes. Its body is stout and compact with grayish-brown fur."</p>
+                  <p class="subcaption">Blob 7: "The umbrella is blue and its style is a traditional, collapsible design."</p>
+                </td>
+            </tr>
+          </table>
+            <p class="caption">
+                Image generation from user-constructed blob representations (blob parameters denoted as different
+                ellipses and blob descriptions denoted by text sentences) along with the global caption.
+                From left to right in each example, we show the blob ellipses, the generated image
+                superimposed by blobs, the generated image itself. We vary the random seed for diverse outputs while all follow the input blob representations.
+            <p class="caption">
+        </center>
     </section>
 
 
