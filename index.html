@@ -286,10 +286,10 @@
                     <span class="material-icons"> description </span>
                     Paper
                 </a>
-                <a class="paper-btn" href="https://github.com/NVlabs/BlobGEN">
-                    <span class="material-icons"> code </span>
-                    Code (TBD)
-                </a>
+                <!--                <a class="paper-btn" href="https://github.com/NVlabs/BlobGEN">-->
+                <!--                    <span class="material-icons"> code </span>-->
+                <!--                    Code (TBD)-->
+                <!--                </a>-->
             </div>
         </div>
     </div>
@@ -316,14 +316,67 @@
 
 
     <section id="teaser-image">
-        </p>
+        <h2>Blob representations and BlobGEN</h2>
+        <hr>
+        <div class="flex-row">
+            <p>
+                We introduce a new type of visual layout, termed <b>dense blob representation</b>, to serve as
+                grounding inputs to guide text-to-image generation.
+                A blob representation corresponds to visual
+                primitives (i.e., objects in a scene) and has two components: 1) the blob parameter, which formulates a
+                tilted
+                ellipse to specify the object's position, size and orientation; and 2) the blob description, which is a
+                rich text sentence that describes the object's appearance, style, and visual attributes.
+                The blob representations can be <b>automatically extracted</b> from a scene: 1) We first apply
+                an open-vocabulary segmentation model to get instance segmentation maps, followed by an ellipse fitting
+                optimization
+                to determine blob parameters for each map.
+                <!--                , aiming to maximize the Intersection Over Union (IOU) between-->
+                <!--                the blob ellipse and segmentation mask. -->
+                2) With segmentation maps, we crop out local regions for all
+                objects in an image and use a vision-language model to caption each blob.
+            </p>
+        </div>
+        <!--        </p>-->
+        <figure style="margin-top: 20px; margin-bottom: 20px;">
+            <a href="assets/blobgen_teaser_v2.png">
+                <center><img width="80%" src="assets/blobgen_teaser_v1.png"></center>
+            </a>
+            <p class="caption">
+                <!--                We visualize the <b>dense blob representation</b> and how we extract them automatically from a scene.-->
+                <!--                <b>Blob representations</b>. -->
+                We extract blob representations (parameters and descriptions) using existing tools to guide the
+                text-to-image diffusion model.
+            <p class="caption">
+            </p>
+        </figure>
+
+        <div class="flex-row">
+            <p>
+                We develop a blob-grounded text-to-image diffusion model, termed <b>BlobGEN</b>, that is built upon
+                existing diffusion models (such as Stable Diffusion), with blob representations as grounding input.
+                To disentangle the fusion between blob representations and visual features,
+                we devise a <b>masked cross-attention</b> module that relates each blob to the corresponding visual
+                feature
+                solely in its local region.
+                With this masking design, blob representations and local visual features are well aligned in an explicit
+                manner. Therefore, the blob grounding process can be more modular and independent across different
+                object regions, and the model can be more disentangled in generation.
+                <!--                Furthermore,-->
+                <!--                we design a new in-context learning approach for LLMs to generate dense blob representations from text-->
+                <!--                prompts. By augmenting our model with LLMs, we can leverage-->
+                <!--                the visual understanding and compositional reasoning capabilities-->
+                <!--                of LLMs to solve complex compositional image generation tasks.-->
+                <!--                Our model paves the way for a modular framework where images can be easily generated or manipulated by-->
+                <!--                users and LLMs.-->
+            </p>
+        </div>
         <figure style="margin-top: 20px; margin-bottom: 20px;">
             <a href="assets/blobgen_teaser_v2.png">
                 <center><img width="80%" src="assets/blobgen_teaser_v2.png"></center>
             </a>
             <p class="caption">
-                (a) We extract blob representations (parameters and descriptions) using existing tools to guide the
-                text-to-image diffusion model. (b) Our model leverages a novel masked cross-attention module that allows
+                BlobGEN leverages a novel masked cross-attention module that allows
                 visual features to attend to only corresponding blobs.
             </p>
             <p class="caption">
@@ -374,7 +427,7 @@
             <p>
                 To further demonstrate that blob representations can capture more fine-grained information than bounding
                 boxes, we provide qualitative results of comparing blob-grounded generation (Ours) and box-grounded
-                generation (GLIGEN [3]). We can clearly see that generated images from blob representations can better
+                generation (GLIGEN [1]). We can clearly see that generated images from blob representations can better
                 reconstruct fine-grained details of the reference image than those from bounding boxes. For instance, in
                 the first example, the
                 laptop's orientation and the two books' orientation and color in the generated image from our method
@@ -393,7 +446,7 @@
             </a>
             <p class="caption" style="margin-bottom: 24px;">
                 More qualitative results of comparing blob-grounded generation (Ours) and box-grounded generation
-                (GLIGEN [3]). In each row, we visualize the reference real image (Left), bounding boxes and GLIGEN
+                (GLIGEN [1]). In each row, we visualize the reference real image (Left), bounding boxes and GLIGEN
                 generated image (Middle), blobs and our generated image (Right). We also highlight the salient objects
                 in each example to guide the scrutinization of how the respective generated image differs from reference
                 image. Note that images have been compressed to save memory. Better zoom in for better
@@ -404,7 +457,7 @@
 
 
     <section id="results_blobgen_edit">
-        <h2>Manipulating blobs to unlock various Local image editing tasks</h2>
+        <h2>Manipulating blobs to unlock various local image editing tasks</h2>
         <hr>
         <div class="flex-row">
             <p>
@@ -491,7 +544,8 @@
             <center><img width="100%" src="assets/blobgen_counting_comp.png"></center>
         </a>
         <p class="caption" style="margin-bottom: 24px;">
-            Qualitative results of various methods on <b>numerical reasoning</b> tasks. In our method, given a caption,
+            Qualitative results of various methods in <b>numerical reasoning</b> tasks on the NSR-1K benchmark [2]. In
+            our method, given a caption,
             we
             prompt GPT4 to generate blob parameters (Left) and LLAMA-13B to generate blob descriptions (not shown in the
             figure), which are passed to BlobGEN to synthesize an image
@@ -504,7 +558,8 @@
             <center><img width="100%" src="assets/blobgen_spatial_comp.png"></center>
         </a>
         <p class="caption" style="margin-bottom: 24px;">
-            Qualitative results of various methods on <b>spatial reasoning</b> tasks. In our method, given a caption, we
+            Qualitative results of various methods in <b>spatial reasoning</b> tasks on the NSR-1K benchmark [2]. In our
+            method, given a caption, we
             prompt GPT4 to generate blob parameters (Left) and LLAMA-13B to generate blob descriptions (not shown in the
             figure), which are passed to BlobGEN to synthesize an image
             (Right). Note that images have been
@@ -515,11 +570,11 @@
 
 
     <section id="results1"/>
-    <h2>Comparison with LMD [1] using fixed in-context examples for LLMs</h2>
+    <h2>Comparison with LMD [3] using fixed in-context examples for LLMs</h2>
     <hr>
     <div class="flex-row">
         <p>
-            Here we compare the qualitative results of our method and LMD [1]. For a fair comparison, we use <b>the
+            We qualitatively compare our method and LMD [3] on the NSR-1K benchmark. For a fair comparison, we use <b>the
             same 8 fixed in-context demo examples</b> (without retrieval) for GPT-4 to generate bounding boxes for LMD
             and blobs for our
             method, respectively. We observe that 1) for some complex examples, such as "a boat to the right of a fork"
@@ -537,7 +592,7 @@
             <center><img width="100%" src="assets/blobs_comp_lmd.png"></center>
         </a>
         <p class="caption" style="margin-bottom: 24px;">
-            Qualitative results of comparing our method with LMD [1] on the NSR-1k benchmark proposed by LayoutGPT [2]
+            Qualitative results of comparing our method with LMD [3] on the NSR-1K benchmark proposed by LayoutGPT [2]
             for spatial and numerical reasoning. In each example, we first prompt GPT-4 to generate boxes for LMD and
             blobs for our method, respectively, with <b>the same 8 fixed in-context demo examples</b>. The generated
             boxes and blobs are passed to LMD and BlobGEN to generate images, respectively. Note that images have been
@@ -552,44 +607,43 @@
     <hr>
     <div class="flex-row">
         <p>
-            [1] L. Lian, et al. "LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion
-            Models with Large Language Models.", TMLR 2023.
+            [1] Y. Li, et al. "GLIGEN: Open-set grounded text-to-image generation.", CVPR 2023.
             <br>
             [2] W. Feng, et al. "LayoutGPT: compositional visual planning and generation with large language models.",
             NeurIPS 2023.
             <br>
-            [3] Y. Li, et al. "GLIGEN: Open-set grounded text-to-image generation.", CVPR 2023.
+            [3] L. Lian, et al. "LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion
+            Models with Large Language Models.", TMLR 2023.
         </p>
     </div>
     </section>
 
 
-    <section id="advantages"/>
-    <h2>Broader impact and limitations</h2>
-    <hr>
-    <div class="flex-row">
-        <p>
-            Our blob-grounded text-to-image model is based on a pre-trained text-to-image model, so it may inherit the
-            potential biases and malicious information from the base model. Because our approach improves both the
-            generation quality and the user controllability over the base model, on the positive side, it will improve
-            the efficiency of human users in using generative models for creative work; on the negative side, similar to
-            any generative AI tool, it can be used to generate malicious content. %fake profiles or other harmful
-            content.
-            Furthermore, when augmented by LLMs for layout planning, our method will simplify the layout designing
-            process, resulting in less burden on human designers for content creation. But we also note that the biases
-            and misinformation from LLMs could also harm the use of our approach without proper regulation.
-        </p>
-        <p>
-            Our work has several limitations that we leave for the future work. First, even though blob representations
-            can preserve fine-grained details of the image, we cannot solely rely on them to perfectly recover the
-            original image, where a combination with inversion methods is still needed. Second,
-            we see some failure cases for image editing, which we believe
-            advanced editing techniques can be applied to alleviate. Third, we also see some
-            failure cases in the numerical and spatial reasoning tasks. It
-            is an interesting challenge to further improve the integration between LLMs and blob-grounded generation.
-        </p>
-    </div>
-    </section>
+    <!--    <section id="advantages"/>-->
+    <!--    <h2>Broader impact and limitations</h2>-->
+    <!--    <hr>-->
+    <!--    <div class="flex-row">-->
+    <!--        <p>-->
+    <!--            Our blob-grounded text-to-image model is based on a pre-trained text-to-image model, so it may inherit the-->
+    <!--            potential biases and malicious information from the base model. Because our approach improves both the-->
+    <!--            generation quality and the user controllability over the base model, on the positive side, it will improve-->
+    <!--            the efficiency of human users in using generative models for creative work; on the negative side, similar to-->
+    <!--            any generative AI tool, it can be used to generate malicious content. -->
+    <!--            Furthermore, when augmented by LLMs for layout planning, our method will simplify the layout designing-->
+    <!--            process, resulting in less burden on human designers for content creation. But we also note that the biases-->
+    <!--            and misinformation from LLMs could also harm the use of our approach without proper regulation.-->
+    <!--        </p>-->
+    <!--        <p>-->
+    <!--            Our work has several limitations that we leave for the future work. First, even though blob representations-->
+    <!--            can preserve fine-grained details of the image, we cannot solely rely on them to perfectly recover the-->
+    <!--            original image, where a combination with inversion methods is still needed. Second,-->
+    <!--            we see some failure cases for image editing, which we believe-->
+    <!--            advanced editing techniques can be applied to alleviate. Third, we also see some-->
+    <!--            failure cases in the numerical and spatial reasoning tasks. It-->
+    <!--            is an interesting challenge to further improve the integration between LLMs and blob-grounded generation.-->
+    <!--        </p>-->
+    <!--    </div>-->
+    <!--    </section>-->
 
     <section id="paper">
         <h2>Paper</h2>
@@ -606,10 +660,10 @@
                 <div><span class="material-icons"> insert_comment </span><a href="assets/nie2024blobgen.bib">
                     BibTeX</a>
                 </div>
-                <div><span class="material-icons"> integration_instructions </span><a
-                        href="https://github.com/NVlabs/BlobGEN"> Code (TBD)</a></div>
+                <!--                <div><span class="material-icons"> integration_instructions </span><a-->
+                <!--                        href="https://github.com/NVlabs/BlobGEN"> Code (TBD)</a></div>-->
+                <!--            </div>-->
             </div>
-        </div>
     </section>
 
     <section id="bibtex">
